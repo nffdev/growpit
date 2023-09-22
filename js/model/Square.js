@@ -3,7 +3,7 @@ export default class Square {
         this.position = {x:x, y:y}
         this.tile = tile
 
-        /*switch(Math.floor(Math.random() * 10)) {
+        switch(Math.floor(Math.random() * 10)) {
             case 0 :
             case 1 :
             case 2 :
@@ -22,7 +22,7 @@ export default class Square {
             case 9 :
                 this.tile = {namespace: "MAP",key: "BUISSON"}
                 break
-        }*/
+        }
     }
 
     display(canvas) {

@@ -13,7 +13,7 @@ export default class Game {
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map1')
+        await this.map.loadMap('map2')
         this.map.display()
 
         this.character = Array()
