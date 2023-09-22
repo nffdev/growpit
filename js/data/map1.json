@@ -7,103 +7,103 @@
     "listSquare": [
         {"x": 0,
         "y": 0,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 1,
         "y": 0,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 2,
         "y": 0,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 3,
         "y": 0,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 4,
         "y": 0,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 0,
         "y": 1,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 1,
         "y": 1,
-        "tile": "GRASS"
+        "tile": {"namespace": "MAP","key": "GRASS"}
         },
         {"x": 2,
         "y": 1,
-        "tile": "BUISSON"
+        "tile": {"namespace": "MAP","key": "BUISSON"}
         },
         {"x": 3,
         "y": 1,
-        "tile": "GRASS"
+        "tile": {"namespace": "MAP","key": "GRASS"}
         },
         {"x": 4,
         "y": 1,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 0,
         "y": 2,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 1,
         "y": 2,
-        "tile": "BUISSON"
+        "tile": {"namespace": "MAP","key": "BUISSON"}
         },
         {"x": 2,
         "y": 2,
-        "tile": "GROUND"
+        "tile": {"namespace": "MAP","key": "GROUND"}
         },
         {"x": 3,
         "y": 2,
-        "tile": "BUISSON"
+        "tile": {"namespace": "MAP","key": "BUISSON"}
         },
         {"x": 4,
         "y": 2,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 0,
         "y": 3,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 1,
         "y": 3,
-        "tile": "GRASS"
+        "tile": {"namespace": "MAP","key": "GRASS"}
         },
         {"x": 2,
         "y": 3,
-        "tile": "BUISSON"
+        "tile": {"namespace": "MAP","key": "BUISSON"}
         },
         {"x": 3,
         "y": 3,
-        "tile": "GRASS"
+        "tile": {"namespace": "MAP","key": "GRASS"}
         },
         {"x": 4,
         "y": 3,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 0,
         "y": 4,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 1,
         "y": 4,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 2,
         "y": 4,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 3,
         "y": 4,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         },
         {"x": 4,
         "y": 4,
-        "tile": "TREE"
+        "tile": {"namespace": "MAP","key": "TREE"}
         }
     ]
 }
