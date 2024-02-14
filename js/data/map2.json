@@ -1,6 +1,8 @@
 {
     "size": {
-        "width": 15,
+        "width": 25,
         "height": 15
-    }
+    },
+
+    "file": "Simple_tileset"
 }

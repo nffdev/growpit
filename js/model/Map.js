@@ -15,13 +15,26 @@ export default class Map {
         Object.assign(this, data)
         this.canvas.setStep(this.size)
         this.clickManager = new ClickManager(this.size)
-        /*for(let i = 0;i < this.listSquare.length;i++) {
-            this.listSquare[i] = new Square(this.listSquare[i].x, this.listSquare[i].y, this.listSquare[i].tile)
-        }*/
-        this.listSquare = Array()
-        for(let x = 0;x < this.size.width; x++) {
-            for(let y = 0;y < this.size.height; y++) {
-                this.listSquare.push(new Square(x, y))
+        if(this.listSquare.length > 0) {
+            if(this.listTile) {
+                this.squareNums = this.listSquare
+                this.listSquare = Array()
+                for(let x = 0;x < this.size.width; x++) {
+                    for(let y = 0;y < this.size.height; y++) {
+                        this.listSquare.push(new Square(x, y, this.listTile[this.squareNums[y][x]]))
+                    }
+                }
+            } else {
+                for(let i = 0;i < this.listSquare.length;i++) {
+                    this.listSquare[i] = new Square(this.listSquare[i].x, this.listSquare[i].y, this.listSquare[i].tile)
+                }
+            }
+        } else {
+            this.listSquare = Array()
+            for(let x = 0;x < this.size.width; x++) {
+                for(let y = 0;y < this.size.height; y++) {
+                    this.listSquare.push(new Square(x, y))
+                }
             }
         }
 
@@ -30,7 +43,7 @@ export default class Map {
 
     display() {
         for(let square of this.listSquare) {
-            square.display(this.canvas)
+            square.display(this.canvas, this.file)
         }
     }
 

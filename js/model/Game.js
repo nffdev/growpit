@@ -22,11 +22,11 @@ export default class Game {
         player.display()
         //player.animate()
 
-        /*let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[224])
+       /* let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[24])
         for(let square of path) {
             square.displayPath(this.map.canvas)
             await new Promise(resolve => setTimeout(resolve, 25))
-        }*/
+        } */ 
         
         this.map.onClick = (position) => {
             let path = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))

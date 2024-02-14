@@ -47,31 +47,35 @@ export default class Character {
     }
 
     async moveTo(path) {
-        for(let square of path) {
-            if(square.position.x == this.position.x && square.position.y == this.position.y) {
-                continue
-            }
-            this.tile.direction = this.getDirection(square.position)
-            let frame = 0
-            let next = true
-            while(next) {
-                frame = frame + (1 / square.weight)
-                if(frame >= 24) {
-                    frame = 23
-                    next = false
+        if(!this.moving) {
+            this.moving = true
+            for(let square of path) {
+                if(square.position.x == this.position.x && square.position.y == this.position.y) {
+                    continue
                 }
-                this.canvas.clear()
-                this.tile.value = Math.floor(frame / 12)
-                this.tile.key = this.tile.direction + this.tile.value
-                this.canvas.drawPixel(this.file, this.tile, this.getMovementPixel({number: frame, total: 24}))
-                await new Promise(resolve => setTimeout(resolve, 30))
+                this.tile.direction = this.getDirection(square.position)
+                let frame = 0
+                let next = true
+                while(next) {
+                    frame = frame + (1 / square.weight)
+                    if(frame >= 24) {
+                        frame = 23
+                        next = false
+                    }
+                    this.canvas.clear()
+                    this.tile.value = Math.floor(frame / 12)
+                    this.tile.key = this.tile.direction + this.tile.value
+                    this.canvas.drawPixel(this.file, this.tile, this.getMovementPixel({number: frame, total: 24}))
+                    await new Promise(resolve => setTimeout(resolve, 30))
+                }
+                this.position = square.position
             }
-            this.position = square.position
+            this.canvas.clear()
+            this.tile.value = 0
+            this.tile.key = this.tile.direction + this.tile.value
+            this.canvas.draw(this.file, this.tile, this.position)
+            this.moving = false
         }
-        this.canvas.clear()
-        this.tile.value = 0
-        this.tile.key = this.tile.direction + this.tile.value
-        this.canvas.draw(this.file, this.tile, this.position)
     }
 
     getDirection(position) {

@@ -11,6 +11,7 @@ export default class ClickManager {
         })
 
         this.canvas.element.addEventListener("contextmenu", (e) => {
+            e.preventDefault()
             this.rightClick(e)
         })
     }
