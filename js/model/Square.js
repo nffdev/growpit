@@ -9,19 +9,19 @@ export default class Square {
                 case 1 :
                 case 2 :
                 case 3 :
-                    this.tile = {namespace: "MAP",key: "GRASS"}
+                    this.tile = {namespace: "MAP",key: "GRASS", weight: 0.7}
                     break
                 case 4 :
                 case 5 :
                 case 6 :
-                    this.tile = {namespace: "MAP",key: "GROUND"}
+                    this.tile = {namespace: "MAP",key: "GROUND", weight: 0.6}
                     break
                 case 7 :
                 case 8 :
-                    this.tile = {namespace: "MAP",key: "TREE"}
+                    this.tile = {namespace: "MAP",key: "TREE", weight: 1, isBlocked: true}
                     break
                 case 9 :
-                    this.tile = {namespace: "MAP",key: "BUISSON"}
+                    this.tile = {namespace: "MAP",key: "BUISSON", weight: 1.5}
                     break
             }
         }

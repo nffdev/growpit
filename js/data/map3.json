@@ -7,10 +7,10 @@
     "file": "Simple_tileset",
 
     "listTile": {
-        "0": {"namespace": "MAP","key": "GRASS"},
-        "1": {"namespace": "MAP","key": "GROUND"},
-        "2": {"namespace": "MAP","key": "TREE"},
-        "3": {"namespace": "MAP","key": "BUISSON"}
+        "0": {"namespace": "MAP","key": "GRASS", "weight": 0.7},
+        "1": {"namespace": "MAP","key": "GROUND", "weight": 0.6},
+        "2": {"namespace": "MAP","key": "TREE", "weight": 1, "isBlocked": true},
+        "3": {"namespace": "MAP","key": "BUISSON", "weight": 1.5, "isBlocked": true}
     },
 
     "listSquare": [
