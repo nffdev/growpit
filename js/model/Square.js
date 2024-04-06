@@ -3,7 +3,7 @@ export default class Square {
         this.position = {x:x, y:y}
         this.tile = tile
 
-        if(tile === undefined) {
+        if(tile === undefined || tile.key === "RANDOM") {
             switch(Math.floor(Math.random() * 10)) {
                 case 0 :
                 case 1 :

@@ -26,16 +26,16 @@ export default class Grid {
         this.closeList = []
         do{
             let bestNode = this.getBestNode()
-            this.openList = this.openList.filter(node => node.position.x !== bestNode.position.x || node.position.y !== bestNode.position.y)
+            this.openList = this.openList.filter(node => node.position != bestNode.position)
         
             let checkList = this.getChildNode(bestNode, destination)
 
             for(let checkNode of checkList) {
                 if(!checkNode.isBlocked) {
-                    if(checkNode.position.x == destination.position.x && checkNode.position.y == destination.position.y) {
+                    if(checkNode.position == destination.position) {
                         return checkNode
                     }
-                    if (!this.openList.some(node => checkNode.position.x == node.position.x && checkNode.position.y == node.position.y && node.f < checkNode.f) && !this.closeList.some(node => checkNode.position.x == node.position.x && checkNode.position.y == node.position.y)) {
+                    if (!this.openList.some(node => checkNode.position == node.position && node.f <= checkNode.f) && !this.closeList.some(node => checkNode.position == node.position)) {
                         this.openList.push(checkNode)
                     }
                 }

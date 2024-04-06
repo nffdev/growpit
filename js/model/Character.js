@@ -14,6 +14,9 @@ export default class Character {
                 this.life = 50
                 this.file = "Slime_vert"
                 break
+            case "Npc":
+                this.life = 100
+                this.file = "Slime_vert"
         }
 
         this.tile = {

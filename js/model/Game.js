@@ -13,13 +13,16 @@ export default class Game {
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map2')
+        await this.map.loadMap('map3')
         this.map.display()
 
         this.character = Array()
 
-        let player = new Character("Slimy", "Player", 5, 5, "BAS")
+        let player = new Character("Slimy", "Player", 23, 13, "BAS")
         player.display()
+
+        /* let npc = new Character("Slimo", "Npc", 23, 12, "BAS")
+        npc.display() */
         //player.animate()
 
        /* let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[24])
@@ -29,9 +32,14 @@ export default class Game {
         } */ 
         
         this.map.onClick = (position) => {
-            let path = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
-            player.moveTo(path)
+            let ppath = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
+            player.moveTo(ppath)
         }
+        
+        /* this.map.onRightClick = (position) => {
+            let npath = this.map.grid.getPath(this.map.getSquare(npc.position), this.map.getSquare(position))
+            npc.moveTo(npath)
+        } */
 
         this.character.push(player)
     }
