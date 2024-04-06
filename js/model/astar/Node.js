@@ -4,7 +4,7 @@ export default class Node {
         this.square = square
         this.isBlocked = false
         switch(square.tile.key) {
-            case "TREE":
+            /* case "TREE":
                 this.isBlocked = true
                 break
             case "GRASS":
@@ -15,9 +15,13 @@ export default class Node {
                 break
             case "BUISSON":
                 this.weight = 1.5
+                break */
+            default:
+                this.weight = square.tile.weight ? square.tile.weight : 0.6
+                this.isBlocked = square.tile.isBlocked ? square.tile.isBlocked : false
                 break
         }
-        this.isBlocked = square.tile.key == "TREE"
+        //this.isBlocked = square.tile.key == "TREE"
     }
 
     heuristic(parent, destination) {
