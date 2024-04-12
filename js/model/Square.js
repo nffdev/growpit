@@ -28,8 +28,9 @@ export default class Square {
     }
 
     display(canvas, file) {
-        if(this.tile.key == "BUISSON" || this.tile.key == "TREE") {
-            canvas.draw(file, {namespace: "MAP", key: "GRASS"}, {x: this.position.x, y: this.position.y})
+        if(this.tile.background) {
+            let square = new Square(this.position.x, this.position.y, this.tile.background)
+            square.display(canvas, file)
         }
         canvas.draw(file, this.tile, {x: this.position.x, y: this.position.y})
     }
