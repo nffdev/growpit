@@ -16,36 +16,18 @@ export default class Map {
         this.canvas.setStep(this.size)
         this.clickManager = new ClickManager(this.size)
         if(this.listSquare.length > 0) {
-            if(this.listTile) {
-                this.squareNums = this.listSquare
-                this.listSquare = Array()
-                for(let x = 0;x < this.size.width; x++) {
-                    for(let y = 0;y < this.size.height; y++) {
-                        this.listSquare.push(new Square(x, y, this.listTile[this.squareNums[y][x]]))
-                    }
-                }
-            } else {
-                this.squareNums = this.listSquare
-                this.listSquare = Array()
-                for(let x = 0;x < this.size.width; x++) {
-                    for(let y = 0;y < this.size.height; y++) {
-                        let index = this.squareNums[y][x]
-                        let tile = {
-                            index: index,
-                            weight: this.weights[index] ? this.weights[index] : 1.5,
-                        }
-                        if(this.obstacles.includes(index)) {
-                            tile.isBlocked = true
-                        }
-                        this.listSquare.push(new Square(x, y, tile))
-                    }
+            this.squareNums = this.listSquare
+            this.listSquare = Array()
+            for(let x = 0;x < this.size.width; x++) {
+                for(let y = 0;y < this.size.height; y++) {
+                    this.listSquare.push(new Square(x, y, data, this.getTileByIndex(this.squareNums[y][x])))
                 }
             }
         } else {
             this.listSquare = Array()
             for(let x = 0;x < this.size.width; x++) {
                 for(let y = 0;y < this.size.height; y++) {
-                    this.listSquare.push(new Square(x, y))
+                    this.listSquare.push(new Square(x, y, data))
                 }
             }
         }
@@ -71,5 +53,21 @@ export default class Map {
 
     getSquare(position) {
         return this.listSquare.find(square => square.position.x == position.x && square.position.y == position.y)
+    }
+
+    getTileByIndex(index) {
+        let tile = {
+            index: index,
+            weight: this.weights[index] ? this.weights[index] : 1.5,
+        }
+        if(this.obstacles.includes(index)) {
+            tile.isBlocked = true
+        }
+        if(this.backgrounds) {
+            if(this.backgrounds[index] !== undefined && this.backgrounds[index] !== index) {
+                tile.background = this.getTileByIndex(this.backgrounds[index])
+            }
+        }
+        return tile
     }
 }

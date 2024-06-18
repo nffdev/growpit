@@ -4,5 +4,20 @@
         "height": 15
     },
 
-    "file": "Simple_tileset"
+    "file": "Simple_tileset",
+
+    "obstacles": [
+        2
+    ],
+
+    "weights": {
+        "0": 0.7,
+        "1": 0.6,
+        "3": 1.5
+    },
+
+    "backgrounds": {
+        "2": 0,
+        "3": 0
+    }
 }
