@@ -24,7 +24,12 @@ export default class Canvas {
     }
 
     draw(file, tile, position) {
-        let image = Tiles.get(file, tile)
+        let image = undefined
+        if(Number.isInteger(tile)) {
+            image = Tiles.getByIndex(file, tile)
+        } else {
+            image = Tiles.get(file, tile)
+        }
         this.context.drawImage(image, 
             0, 
             0, 
