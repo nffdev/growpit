@@ -12,10 +12,12 @@ export default class Character {
         switch(this.type) {
             case "Player":
                 this.life = 50
+                this.speed = 30
                 this.file = "Slime_vert"
                 break
             case "Npc":
                 this.life = 100
+                this.speed = 30
                 this.file = "Slime_vert"
         }
 
@@ -70,7 +72,7 @@ export default class Character {
                     this.tile.value = Math.floor(frame / 12)
                     this.tile.key = this.tile.direction + this.tile.value
                     this.canvas.drawPixel(this.file, this.tile, this.getMovementPixel({number: frame, total: 24}))
-                    await new Promise(resolve => setTimeout(resolve, 30))
+                    await new Promise(resolve => setTimeout(resolve, this.speed))
                 }
                 this.position = square.position
                 if(this.stop) {
