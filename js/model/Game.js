@@ -9,27 +9,28 @@ export default class Game {
     async init() {
         this.tileManager = new TileManager()
         await this.tileManager.loadFile("map", "Simple_tileset", 4, 1)
+        await this.tileManager.loadFile("map", "Wooden_tileset", 6, 6)
         await this.tileManager.loadFile("map", "Simple_tile", 1, 1)
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map3')
+        await this.map.loadMap('map4')
         this.map.display()
 
-        this.character = Array()
+        this.characters = Array()
 
         let player = new Character("Slimy", "Player", 23, 13, "BAS")
         player.display()
 
         /* let npc = new Character("Slimo", "Npc", 23, 12, "BAS")
         npc.display() */
-        //player.animate()
+        /* //player.animate()
 
-       /* let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[24])
+        let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[24])
         for(let square of path) {
             square.displayPath(this.map.canvas)
             await new Promise(resolve => setTimeout(resolve, 25))
-        } */ 
+        } */
         
         this.map.onClick = (position) => {
             let ppath = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
@@ -41,6 +42,6 @@ export default class Game {
             npc.moveTo(npath)
         } */
 
-        this.character.push(player)
+        this.characters.push(player)
     }
 }

@@ -43,7 +43,9 @@ export default class Map {
 
     display() {
         for(let square of this.listSquare) {
-            square.display(this.canvas, this.file)
+            if(square.tile.key !== "NONE") {
+                square.display(this.canvas, this.file)
+            }
         }
     }
 
