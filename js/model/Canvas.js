@@ -25,8 +25,8 @@ export default class Canvas {
 
     draw(file, tile, position) {
         let image = undefined
-        if(Number.isInteger(tile)) {
-            image = Tiles.getByIndex(file, tile)
+        if(Number.isInteger(tile.index)) {
+            image = Tiles.getByIndex(file, tile.index)
         } else {
             image = Tiles.get(file, tile)
         }
