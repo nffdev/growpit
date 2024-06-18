@@ -51,6 +51,7 @@ export default class Character {
 
     async moveTo(path) {
         if(!this.moving) {
+            this.stop = false
             this.moving = true
             for(let square of path) {
                 if(square.position.x == this.position.x && square.position.y == this.position.y) {
@@ -72,6 +73,9 @@ export default class Character {
                     await new Promise(resolve => setTimeout(resolve, 30))
                 }
                 this.position = square.position
+                if(this.stop) {
+                    break
+                }
             }
             this.canvas.clear()
             this.tile.value = 0
@@ -79,6 +83,7 @@ export default class Character {
             this.canvas.draw(this.file, this.tile, this.position)
             this.moving = false
         }
+        return true
     }
 
     getDirection(position) {

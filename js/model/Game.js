@@ -14,7 +14,7 @@ export default class Game {
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map-indexes')
+        await this.map.loadMap('map-random')
         this.map.display()
 
         this.characters = Array()
@@ -31,17 +31,34 @@ export default class Game {
             square.displayPath(this.map.canvas)
             await new Promise(resolve => setTimeout(resolve, 25))
         } */
-        
+       
         this.map.onClick = (position) => {
-            let ppath = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
-            player.moveTo(ppath)
+            this.moveOnClick(position, player)
         }
         
         /* this.map.onRightClick = (position) => {
-            let npath = this.map.grid.getPath(this.map.getSquare(npc.position), this.map.getSquare(position))
-            npc.moveTo(npath)
+        let npath = this.map.grid.getPath(this.map.getSquare(npc.position), this.map.getSquare(position))
+        npc.moveTo(npath)
         } */
-
         this.characters.push(player)
+    }
+    
+    moveOnClick(position, player) {
+        let ppath = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
+        player.moveTo(ppath).then((resolve, reject) => {
+            this.map.onClick = (position) => {
+                this.moveOnClick(position, player)
+            }
+        })
+        this.map.onClick = () => {
+            this.stopMove(player)
+        }
+    }
+
+    stopMove(player) {
+        player.stop = true
+        this.map.onClick = (position) => {
+            this.moveOnClick(position, player)
+        }
     }
 }
