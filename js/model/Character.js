@@ -3,6 +3,7 @@ import Canvas from "./Canvas.js"
 export default class Character {
     constructor(name, type, x, y, direction) {
         this.canvas = new Canvas()
+        this.canvas.element.style.zIndex = 2
         this.canvas.setStep(game.map.size)
         this.name = name
         this.type = type
