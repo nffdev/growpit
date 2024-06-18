@@ -14,7 +14,7 @@ export default class Game {
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map4')
+        await this.map.loadMap('map-indexes')
         this.map.display()
 
         this.characters = Array()
