@@ -1,6 +1,8 @@
 import Map from './Map.js'
 import TileManager from './Tilemanager.js'
 import Character from './Character.js'
+import Solid from './item/Solid.js'
+import Static from './item/Static.js'
 
 export default class Game {
     constructor() {
@@ -14,10 +16,11 @@ export default class Game {
         await this.tileManager.loadFile("character", "Slime_vert", 2, 4)
         
         this.map = new Map()
-        await this.map.loadMap('map-random')
+        await this.map.loadMap('map-wood')
         this.map.display()
 
         this.characters = Array()
+        this.items = Array()
 
         let player = new Character("Slimy", "Player", 23, 13, "BAS")
         player.display()
@@ -41,6 +44,14 @@ export default class Game {
         npc.moveTo(npath)
         } */
         this.characters.push(player)
+
+        let solid = new Solid('Simple_tileset', {index: 2}, 12, 10)
+        solid.display()
+
+        let staticItem = new Static('Simple_tileset', {index: 3}, 15, 12, 1.5)
+        staticItem.display()
+
+        this.items.push(solid, staticItem)
     }
     
     moveOnClick(position, player) {
