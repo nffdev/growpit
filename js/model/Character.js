@@ -13,7 +13,7 @@ export default class Character {
         switch(this.type) {
             case "Player":
                 this.life = 50
-                this.speed = 30
+                this.speed = 20
                 this.file = "Slime_vert"
                 break
             case "Npc":
