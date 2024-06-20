@@ -1,7 +1,7 @@
 import Canvas from '../Canvas.js'
 
 export default class Item {
-    constructor(file, tile, x, y ) {
+    constructor(file, tile, x, y) {
         this.canvas = new Canvas()
         this.canvas.element.style.zIndex = 1
         this.canvas.setStep(game.map.size)
