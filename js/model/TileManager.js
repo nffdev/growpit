@@ -1,8 +1,21 @@
+/**
+ * Class TileManager: Manage the files 
+ * for the tiles (tileset, tiles). 
+ * Images need to be .png
+ */
 export default class TileManager {
     constructor() {
         this.listFile = {}
     }
 
+    /**
+     * Method loadFile, get an image and cut it into tiles.
+     * Tiles are stored in the listFile[file] property
+     * @param {string} folder Folder where the file is stored (path)
+     * @param {string} file File containing the image (Must be .png and without extension)
+     * @param {int} elementX Number of tiles in the image width
+     * @param {int} elementY Number of tiles in the image height
+     */
     async loadFile(folder, file, elementX, elementY) {
         let result = await fetch(`/tiles/${folder}/${file}.png`)
         this.listFile[file] = {

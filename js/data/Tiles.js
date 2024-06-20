@@ -1,8 +1,23 @@
+/**
+ * Class Tiles: Access the tiles from the tileManager
+ */
 export default class Tiles {
+    /**
+     * Method get: Get the tile's image
+     * @param {string} file File where the image is stored 
+     * @param {object} tile Tile information
+     * @returns Tile's image 
+     */
     static get(file, tile) {
         return game.tileManager.listFile[file].listItem[this[tile.namespace][tile.key]]
     }
 
+    /**
+     * Method getByIndex: Get the tile's image by index
+     * @param {string} file File where the image is stored 
+     * @param {int} tile Tile's index
+     * @returns Tile's image
+     */
     static getByIndex(file, tile) {
         return game.tileManager.listFile[file].listItem[tile]
     }

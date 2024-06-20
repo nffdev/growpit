@@ -1,5 +1,12 @@
 import Canvas from '../Canvas.js'
 
+/**
+ * Class Item: Represents an item
+ * @param {string} file the file where the texture is stored
+ * @param {object} tile the texture infos
+ * @param {int} x Item's horizontal position
+ * @param {int} y Item's vertical position
+ */
 export default class Item {
     constructor(file, tile, x, y) {
         this.canvas = new Canvas()
@@ -10,6 +17,9 @@ export default class Item {
         this.position = {x:x, y:y}
     }
 
+    /**
+     * Method display: display the item in the canvas
+     */
     display() {
         this.canvas.draw(this.file, this.tile, {x: this.position.x, y: this.position.y})
     }

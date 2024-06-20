@@ -1,5 +1,9 @@
 import Tiles from "/js/data/Tiles.js"
 
+/**
+ * Class Canvas: represents an html canvas
+ * @param {*} element Canvas html element (optional)
+ */
 export default class Canvas {
     constructor(element) {
         if(element == undefined) {
@@ -18,11 +22,21 @@ export default class Canvas {
         this.element.height = this.height
     }
 
+    /**
+     * Method setstep: Set the size of the tiles
+     * @param {object} size Object with the width and the height
+     */
     setStep(size) {
         this.stepX = this.width / size.width
         this.stepY = this.height / size.height
     }
 
+    /**
+     * Method draw: draw the tile in the canvas
+     * @param {string} file File where the tile is stored
+     * @param {object} tile The tile to draw 
+     * @param {object} position The position where draw
+     */
     draw(file, tile, position) {
         let image = undefined
         if(Number.isInteger(tile.index)) {
@@ -41,6 +55,12 @@ export default class Canvas {
             this.stepY)
     }
 
+    /**
+     * Method drawPixel: Draw the tile out the grid
+     * @param {string} file Where the tile is stored 
+     * @param {object} tile Tile to draw
+     * @param {object} pixel Pixel where draw in the canvas
+     */
     drawPixel(file, tile, pixel) {
         let image = Tiles.get(file, tile)
         this.context.drawImage(image, 
@@ -54,6 +74,9 @@ export default class Canvas {
             this.stepY)
     }
 
+    /**
+     * Method clear: Clear the canvas
+     */
     clear() {
         this.context.clearRect(0, 0, this.element.width, this.element.height)
     }

@@ -1,5 +1,6 @@
 /**
  * Class Node: represents a square in the grid
+ * @param {Square} square Square to convert into a node
  */
 export default class Node {
     constructor(square) {

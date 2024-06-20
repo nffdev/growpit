@@ -1,11 +1,22 @@
 import Node from "./Node.js"
 
+/**
+ * Class Grid: represents the map with obstacles
+ * @param {array} listSquare The list of the map's squares
+ * @param {object} size The grid's size
+ */
 export default class Grid {
     constructor(listSquare, size) {
         this.size = size
         this.listSquare = listSquare
     }
 
+    /**
+     * Method getPath: get the path between origin and destination
+     * @param {Square} origin The origin square 
+     * @param {Square} destination The destination square
+     * @returns Path
+     */
     getPath(origin, destination) {
         let path = Array()
         let hierarchicPath = this.findPath(origin, destination)
@@ -16,6 +27,12 @@ export default class Grid {
         return path.reverse()
     }
 
+    /**
+     * Method findPath: search the best nodes for the path
+     * @param {Square} origin The origin Square 
+     * @param {Square} destination The destination square
+     * @returns The last node checked
+     */
     findPath(origin, destination) {
         origin = new Node(origin)
         destination = new Node(destination)
@@ -45,6 +62,10 @@ export default class Grid {
         return null
     }
 
+    /**
+     * Method getBestNode: get the best node from the openList
+     * @returns The best Node
+     */
     getBestNode() {
         let bestNode = null
         for(let node of this.openList) {
@@ -57,6 +78,12 @@ export default class Grid {
         return bestNode
     }
 
+    /**
+     * Method getChildNode: get the 4 nearest nodes
+     * @param {Node} parent the parent node 
+     * @param {Node} destination The destination node
+     * @returns An array of the 4 nodes
+     */
     getChildNode(parent, destination) {
         let checkList = Array()
 

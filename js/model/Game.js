@@ -4,10 +4,16 @@ import Character from './Character.js'
 import Solid from './item/Solid.js'
 import Static from './item/Static.js'
 
+/**
+ * Class Game: Represents the game
+ */
 export default class Game {
     constructor() {
     }
 
+    /**
+     * Method init: executes the game
+     */
     async init() {
         this.tileManager = new TileManager()
         await this.tileManager.loadFile("map", "Simple_tileset", 4, 1)
@@ -27,13 +33,6 @@ export default class Game {
 
         /* let npc = new Character("Slimo", "Npc", 23, 12, "BAS")
         npc.display() */
-        /* //player.animate()
-
-        let path = this.map.grid.getPath(this.map.listSquare[0], this.map.listSquare[24])
-        for(let square of path) {
-            square.displayPath(this.map.canvas)
-            await new Promise(resolve => setTimeout(resolve, 25))
-        } */
        
         this.map.onClick = (position) => {
             this.moveOnClick(position, player)
@@ -54,22 +53,32 @@ export default class Game {
         this.items.push(solid, staticItem)
     }
     
-    moveOnClick(position, player) {
-        let ppath = this.map.grid.getPath(this.map.getSquare(player.position), this.map.getSquare(position))
-        player.moveTo(ppath).then((resolve, reject) => {
+    /**
+     * Method moveOnClick: Default action for click (move character)
+     * @param {object} position Destination position
+     * @param {Character} character Character to move 
+     */
+    moveOnClick(position, character) {
+        let ppath = this.map.grid.getPath(this.map.getSquare(character.position), this.map.getSquare(position))
+        console.log(ppath);
+        character.moveTo(ppath).then((resolve, reject) => {
             this.map.onClick = (position) => {
-                this.moveOnClick(position, player)
+                this.moveOnClick(position, character)
             }
         })
         this.map.onClick = () => {
-            this.stopMove(player)
+            this.stopMove(character)
         }
     }
 
-    stopMove(player) {
-        player.stop = true
+    /**
+     * Method stopMove: Action on click (stop character move)
+     * @param {Character} character Character to stop move 
+     */
+    stopMove(character) {
+        character.stop = true
         this.map.onClick = (position) => {
-            this.moveOnClick(position, player)
+            this.moveOnClick(position, character)
         }
     }
 }

@@ -1,5 +1,13 @@
 import Canvas from "./Canvas.js"
 
+/**
+ * Class Character: Represents a character in the game
+ * @param {string} name Name of the character
+ * @param {string} type Type of the character
+ * @param {int} x Character's horizontal position
+ * @param {int} y Character's vertical position
+ * @param {string} direction Character's orientation
+ */
 export default class Character {
     constructor(name, type, x, y, direction) {
         this.canvas = new Canvas()
@@ -31,10 +39,16 @@ export default class Character {
 
     }
 
+    /**
+     * Method display: Show the character in the map
+     */
     display() {
         this.canvas.draw(this.file, this.tile, {x: this.position.x, y: this.position.y})
     }
 
+    /**
+     * Method animate: Display an animation for the character
+     */
     animate() {
         setInterval(() => {
             this.canvas.clear()
@@ -43,6 +57,9 @@ export default class Character {
         }, 300)
     }
 
+    /**
+     * Method nextTile: Get the next tile of the animation
+     */
     nextTile() {
         if(this.tile.value >= 1) {
             this.tile.value = 0
@@ -52,6 +69,11 @@ export default class Character {
         this.tile.key = this.direction + this.tile.value
     }
 
+    /**
+     * Method moveTo: move the character through the given path
+     * @param {array} path The path to follow 
+     * @returns Returns true when finished
+     */
     async moveTo(path) {
         if(!this.moving) {
             this.stop = false
@@ -89,6 +111,11 @@ export default class Character {
         return true
     }
 
+    /**
+     * Method getDirection: Get the direction for the move
+     * @param {object} position Position of the tile to target 
+     * @returns Orientation of the character to target
+     */
     getDirection(position) {
         switch(true) {
             case position.x > this.position.x:
@@ -102,6 +129,11 @@ export default class Character {
         }
     }
 
+    /**
+     * Method getMovementPixel: Get the pixel to move on
+     * @param {int} frame Step of the movement  
+     * @returns The position of the new display
+     */
     getMovementPixel(frame) {
         switch(this.tile.direction) {
             case "DROITE":

@@ -3,12 +3,19 @@ import Square from './Square.js'
 import Grid from './astar/Grid.js'
 import Canvas from './Canvas.js'
 
+/**
+ * Class Map: Represents the game's map
+ */
 export default class Map {
     constructor() {
         this.listSquare = Array()
         this.canvas = new Canvas()
     }
 
+    /**
+     * Method loadMap: Load the map with passed data
+     * @param {string} file Json of the map 
+     */
     async loadMap(file) {
         let result = await fetch(`js/data/${file}.json`)
         let data = await result.json()
@@ -35,6 +42,9 @@ export default class Map {
         this.grid = new Grid(this.listSquare, this.size) 
     }
 
+    /**
+     * Method display: Display each square of the map
+     */
     display() {
         for(let square of this.listSquare) {
             if(square.tile.key !== "NONE") {
@@ -43,22 +53,45 @@ export default class Map {
         }
     }
 
+    /**
+     * Method onClick: Called on click
+     * @param {callback} callback Action to execute on click 
+     */
     onClick(callback) {
         this.click = callback
     }
 
+    /**
+     * Method onRightClick: Called on right click
+     * @param {callback} callback Action to execute on right click 
+     */
     onRightClick(callback) {
         this.rightClick = callback
     }
 
+    /**
+     * Method getSquare: Find a tile in the map
+     * @param {object} position position of the tile 
+     * @returns The Square object of the tile
+     */
     getSquare(position) {
         return this.listSquare.find(square => square.position.x == position.x && square.position.y == position.y)
     }
 
+    /**
+     * Method getSquareIndex: Find the index of a tile in the map
+     * @param {object} position position of the tile 
+     * @returns The index of the tile in the map
+     */
     getSquareIndex(position) {
         return this.listSquare.findIndex(square => square.position.x == position.x && square.position.y == position.y)
     }
 
+    /**
+     * Method getTileByIndex: Create a tile object of the given index
+     * @param {int} index Index of the tile info
+     * @returns Tile object with the index of the tile in the file it background and weight
+     */
     getTileByIndex(index) {
         let tile = {
             index: index,
