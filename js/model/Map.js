@@ -55,6 +55,10 @@ export default class Map {
         return this.listSquare.find(square => square.position.x == position.x && square.position.y == position.y)
     }
 
+    getSquareIndex(position) {
+        return this.listSquare.findIndex(square => square.position.x == position.x && square.position.y == position.y)
+    }
+
     getTileByIndex(index) {
         let tile = {
             index: index,
