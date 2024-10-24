@@ -9,16 +9,16 @@ import Map from './Map.js';
  */
 export default class Square {
     constructor(x, y, data, tile) {
-        this.position = {x:x, y:y}
-        this.tile = tile
-        this.data = data
+        this.position = {x:x, y:y};
+        this.tile = tile;
+        this.data = data;
 
         if(tile === undefined) {
-            let max = game.tileManager.listFile[data.file].listItem.length
-            let rand = Math.floor((Math.random() * max * 10) / 10)
-            let map = new Map()
-            Object.assign(map, data)
-            this.tile = map.getTileByIndex(rand)
+            let max = game.tileManager.listFile[data.file].listItem.length;
+            let rand = Math.floor((Math.random() * max * 10) / 10);
+            let map = new Map();
+            Object.assign(map, data);
+            this.tile = map.getTileByIndex(rand);
         }
     }
 
@@ -29,9 +29,9 @@ export default class Square {
      */
     display(canvas, file) {
         if(this.tile.background) {
-            let square = new Square(this.position.x, this.position.y, this.data, this.tile.background)
-            square.display(canvas, file)
+            let square = new Square(this.position.x, this.position.y, this.data, this.tile.background);
+            square.display(canvas, file);
         }
-        canvas.draw(file, this.tile, {x: this.position.x, y: this.position.y})
+        canvas.draw(file, this.tile, {x: this.position.x, y: this.position.y});
     }
 }

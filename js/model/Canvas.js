@@ -1,4 +1,4 @@
-import Tiles from "/js/data/Tiles.js"
+import Tiles from "/js/data/Tiles.js";
 
 /**
  * Class Canvas: represents an html canvas
@@ -7,19 +7,19 @@ import Tiles from "/js/data/Tiles.js"
 export default class Canvas {
     constructor(element) {
         if(element == undefined) {
-            this.element = document.createElement("canvas")
-            document.getElementById("console").appendChild(this.element)
+            this.element = document.createElement("canvas");
+            document.getElementById("console").appendChild(this.element);
         } else {
-        this.element = element
+        this.element = element;
         }
-        this.context = this.element.getContext('2d')
-        this.element.classList.add("canvas")
+        this.context = this.element.getContext('2d');
+        this.element.classList.add("canvas");
 
-        this.width = this.element.offsetWidth
-        this.height = this.element.offsetHeight
+        this.width = this.element.offsetWidth;
+        this.height = this.element.offsetHeight;
 
-        this.element.width = this.width
-        this.element.height = this.height
+        this.element.width = this.width;
+        this.element.height = this.height;
     }
 
     /**
@@ -27,8 +27,8 @@ export default class Canvas {
      * @param {object} size Object with the width and the height
      */
     setStep(size) {
-        this.stepX = this.width / size.width
-        this.stepY = this.height / size.height
+        this.stepX = this.width / size.width;
+        this.stepY = this.height / size.height;
     }
 
     /**
@@ -38,11 +38,11 @@ export default class Canvas {
      * @param {object} position The position where draw
      */
     draw(file, tile, position) {
-        let image = undefined
+        let image = undefined;
         if(Number.isInteger(tile.index)) {
-            image = Tiles.getByIndex(file, tile.index)
+            image = Tiles.getByIndex(file, tile.index);
         } else {
-            image = Tiles.get(file, tile)
+            image = Tiles.get(file, tile);
         }
         this.context.drawImage(image, 
             0, 
@@ -52,7 +52,7 @@ export default class Canvas {
             position.x * this.stepX, 
             position.y * this.stepY, 
             this.stepX, 
-            this.stepY)
+            this.stepY);
     }
 
     /**
@@ -62,7 +62,7 @@ export default class Canvas {
      * @param {object} pixel Pixel where draw in the canvas
      */
     drawPixel(file, tile, pixel) {
-        let image = Tiles.get(file, tile)
+        let image = Tiles.get(file, tile);
         this.context.drawImage(image, 
             0, 
             0, 
@@ -71,13 +71,13 @@ export default class Canvas {
             pixel.x,
             pixel.y,
             this.stepX, 
-            this.stepY)
+            this.stepY);
     }
 
     /**
      * Method clear: Clear the canvas
      */
     clear() {
-        this.context.clearRect(0, 0, this.element.width, this.element.height)
+        this.context.clearRect(0, 0, this.element.width, this.element.height);
     }
 }

@@ -1,15 +1,15 @@
-import ClickManager from './ClickManager.js'
-import Square from './Square.js'
-import Grid from './astar/Grid.js'
-import Canvas from './Canvas.js'
+import ClickManager from './ClickManager.js';
+import Square from './Square.js';
+import Grid from './astar/Grid.js';
+import Canvas from './Canvas.js';
 
 /**
  * Class Map: Represents the game's map
  */
 export default class Map {
     constructor() {
-        this.listSquare = Array()
-        this.canvas = new Canvas()
+        this.listSquare = Array();
+        this.canvas = new Canvas();
     }
 
     /**
@@ -17,29 +17,29 @@ export default class Map {
      * @param {string} file Json of the map 
      */
     async loadMap(file) {
-        let result = await fetch(`js/data/${file}.json`)
-        let data = await result.json()
-        Object.assign(this, data)
-        this.canvas.setStep(this.size)
-        this.clickManager = new ClickManager(this.size)
+        let result = await fetch(`js/data/${file}.json`);
+        let data = await result.json();
+        Object.assign(this, data);
+        this.canvas.setStep(this.size);
+        this.clickManager = new ClickManager(this.size);
         if(this.listSquare.length > 0) {
-            this.squareNums = this.listSquare
-            this.listSquare = Array()
+            this.squareNums = this.listSquare;
+            this.listSquare = Array();
             for(let x = 0;x < this.size.width; x++) {
                 for(let y = 0;y < this.size.height; y++) {
-                    this.listSquare.push(new Square(x, y, data, this.getTileByIndex(this.squareNums[y][x])))
+                    this.listSquare.push(new Square(x, y, data, this.getTileByIndex(this.squareNums[y][x])));
                 }
             }
         } else {
-            this.listSquare = Array()
+            this.listSquare = Array();
             for(let x = 0;x < this.size.width; x++) {
                 for(let y = 0;y < this.size.height; y++) {
-                    this.listSquare.push(new Square(x, y, data))
+                    this.listSquare.push(new Square(x, y, data));
                 }
             }
         }
 
-        this.grid = new Grid(this.listSquare, this.size) 
+        this.grid = new Grid(this.listSquare, this.size) ;
     }
 
     /**
@@ -48,7 +48,7 @@ export default class Map {
     display() {
         for(let square of this.listSquare) {
             if(square.tile.key !== "NONE") {
-                square.display(this.canvas, this.file)
+                square.display(this.canvas, this.file);
             }
         }
     }
@@ -58,7 +58,7 @@ export default class Map {
      * @param {callback} callback Action to execute on click 
      */
     onClick(callback) {
-        this.click = callback
+        this.click = callback;
     }
 
     /**
@@ -66,7 +66,7 @@ export default class Map {
      * @param {callback} callback Action to execute on right click 
      */
     onRightClick(callback) {
-        this.rightClick = callback
+        this.rightClick = callback;
     }
 
     /**
@@ -75,7 +75,7 @@ export default class Map {
      * @returns The Square object of the tile
      */
     getSquare(position) {
-        return this.listSquare.find(square => square.position.x == position.x && square.position.y == position.y)
+        return this.listSquare.find(square => square.position.x == position.x && square.position.y == position.y);
     }
 
     /**
@@ -84,7 +84,7 @@ export default class Map {
      * @returns The index of the tile in the map
      */
     getSquareIndex(position) {
-        return this.listSquare.findIndex(square => square.position.x == position.x && square.position.y == position.y)
+        return this.listSquare.findIndex(square => square.position.x == position.x && square.position.y == position.y);
     }
 
     /**
@@ -96,15 +96,15 @@ export default class Map {
         let tile = {
             index: index,
             weight: this.weights[index] ? this.weights[index] : 1.5,
-        }
+        };
         if(this.obstacles.includes(index)) {
-            tile.isBlocked = true
+            tile.isBlocked = true;
         }
         if(this.backgrounds) {
             if(this.backgrounds[index] !== undefined && this.backgrounds[index] !== index) {
-                tile.background = this.getTileByIndex(this.backgrounds[index])
+                tile.background = this.getTileByIndex(this.backgrounds[index]);
             }
         }
-        return tile
+        return tile;
     }
 }
