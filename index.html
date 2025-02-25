@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <div id="console">
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-overlay">
+            <div id="health-bar"></div>
+            <div id="ammo-counter"></div>
+            <div id="super-ability"></div>
+        </div>
+        <div id="game-menu" class="hidden">
+            <h2>Sélectionnez votre Brawler</h2>
+            <div id="brawler-selection"></div>
+            <button id="start-game">Commencer</button>
         </div>
     </div>
     <script src="/js/main.js" type="module"></script>
